@@ -1,3 +1,5 @@
+package domain.audit;
+
 import java.util.Date;
 
 public class LogRecord {

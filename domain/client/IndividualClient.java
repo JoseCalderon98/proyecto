@@ -1,3 +1,5 @@
+package domain.client;
+
 import java.util.Date;
 
 public class IndividualClient extends Client {

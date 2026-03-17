@@ -1,3 +1,5 @@
+package domain.user;
+
 public class SystemRole {
     private int roleId;
     private String description;

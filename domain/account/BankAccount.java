@@ -1,3 +1,5 @@
+package domain.account;
+
 import java.util.Date;
 
 public class BankAccount {

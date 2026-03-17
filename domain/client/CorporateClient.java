@@ -1,3 +1,5 @@
+package domain.client;
+
 public class CorporateClient extends Client {
     private String companyName;
     private String taxId;

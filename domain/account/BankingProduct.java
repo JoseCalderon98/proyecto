@@ -1,3 +1,5 @@
+package domain.account;
+
 public class BankingProduct {
     private String productCode;
     private String productName;

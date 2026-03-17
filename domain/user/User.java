@@ -1,3 +1,7 @@
+package domain.user;
+
+import domain.client.Client;
+
 public class User {
     private int userId;
     private Client client;
