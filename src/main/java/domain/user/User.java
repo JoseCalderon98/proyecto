@@ -11,11 +11,11 @@ public class User {
     private String email;
     private String phone;
     private String address;
-    private String systemRole;
-    private String userStatus;
+    private UserRole systemRole;
+    private UserStatus userStatus;
     private String username;
 
-    public User(int userId, Client client, String relatedId, String fullName, String identification, String email, String phone, String address, String systemRole, String userStatus, String username) {
+    public User(int userId, Client client, String relatedId, String fullName, String identification, String email, String phone, String address, UserRole systemRole, UserStatus userStatus, String username) {
         this.userId = userId;
         this.client = client;
         this.relatedId = relatedId;
@@ -27,6 +27,9 @@ public class User {
         this.systemRole = systemRole;
         this.userStatus = userStatus;
         this.username = username;
+    }
+    
+    public User() {
     }
 
     public int getUserId() { return userId; }
@@ -53,11 +56,11 @@ public class User {
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
 
-    public String getSystemRole() { return systemRole; }
-    public void setSystemRole(String systemRole) { this.systemRole = systemRole; }
+    public UserRole getSystemRole() { return systemRole; }
+    public void setSystemRole(UserRole systemRole) { this.systemRole = systemRole; }
 
-    public String getUserStatus() { return userStatus; }
-    public void setUserStatus(String userStatus) { this.userStatus = userStatus; }
+    public UserStatus getUserStatus() { return userStatus; }
+    public void setUserStatus(UserStatus userStatus) { this.userStatus = userStatus; }
 
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
