@@ -1,50 +1,33 @@
-package domain.models.transfer;
+package application.adapters.persistence.sql.entities;
 
+import domain.models.transfer.TransferStatus;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Transfer {
+@Entity
+@Table(name = "transfers")
+public class TransferEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int transferId;
+
     private String originAccount;
     private String destinationAccount;
     private BigDecimal amount;
     private LocalDateTime creationDate;
     private LocalDateTime approvalDate;
+
+    @Enumerated(EnumType.STRING)
     private TransferStatus transferStatus;
+
     private int creatorUserId;
     private int approverUserId;
 
-    public Transfer(int transferId, String originAccount, String destinationAccount, BigDecimal amount, LocalDateTime creationDate, LocalDateTime approvalDate, TransferStatus transferStatus, int creatorUserId, int approverUserId) {
-        this.transferId = transferId;
-        this.originAccount = originAccount;
-        this.destinationAccount = destinationAccount;
-        this.amount = amount;
-        this.creationDate = creationDate;
-        this.approvalDate = approvalDate;
-        this.transferStatus = transferStatus;
-        this.creatorUserId = creatorUserId;
-        this.approverUserId = approverUserId;
-    }
-    
-    public Transfer() {
-    }
+    // Default constructor for JPA
+    public TransferEntity() {}
 
-    public void approve(int approverId) {
-        if (this.transferStatus != TransferStatus.PENDING) {
-            throw new IllegalStateException("Only pending transfers can be approved");
-        }
-        this.transferStatus = TransferStatus.COMPLETED;
-        this.approvalDate = LocalDateTime.now();
-        this.approverUserId = approverId;
-    }
-
-    public void expire() {
-        if (this.transferStatus != TransferStatus.PENDING) {
-            throw new IllegalStateException("Only pending transfers can be expired");
-        }
-        this.transferStatus = TransferStatus.EXPIRED;
-    }
-
+    // Getters and Setters
     public int getTransferId() { return transferId; }
     public void setTransferId(int transferId) { this.transferId = transferId; }
 
@@ -72,4 +55,3 @@ public class Transfer {
     public int getApproverUserId() { return approverUserId; }
     public void setApproverUserId(int approverUserId) { this.approverUserId = approverUserId; }
 }
-

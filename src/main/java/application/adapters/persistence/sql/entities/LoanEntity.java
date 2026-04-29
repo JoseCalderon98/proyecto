@@ -1,56 +1,39 @@
-package domain.models.loan;
+package application.adapters.persistence.sql.entities;
 
+import domain.models.loan.LoanStatus;
+import domain.models.loan.LoanType;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class Loan {
+@Entity
+@Table(name = "loans")
+public class LoanEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int loanId;
+
+    @Enumerated(EnumType.STRING)
     private LoanType loanType;
+
     private String applicantClientId;
     private BigDecimal requestedAmount;
     private BigDecimal approvedAmount;
     private BigDecimal interestRate;
     private int termMonths;
+
+    @Enumerated(EnumType.STRING)
     private LoanStatus loanStatus;
+
     private LocalDateTime approvalDate;
     private LocalDateTime disbursementDate;
     private String destinationAccountForDisbursement;
     private int creatorUserId;
 
-    public Loan(int loanId, LoanType loanType, String applicantClientId, BigDecimal requestedAmount, BigDecimal approvedAmount, BigDecimal interestRate, int termMonths, LoanStatus loanStatus, LocalDateTime approvalDate, LocalDateTime disbursementDate, String destinationAccountForDisbursement, int creatorUserId) {
-        this.loanId = loanId;
-        this.loanType = loanType;
-        this.applicantClientId = applicantClientId;
-        this.requestedAmount = requestedAmount;
-        this.approvedAmount = approvedAmount;
-        this.interestRate = interestRate;
-        this.termMonths = termMonths;
-        this.loanStatus = loanStatus;
-        this.approvalDate = approvalDate;
-        this.disbursementDate = disbursementDate;
-        this.destinationAccountForDisbursement = destinationAccountForDisbursement;
-        this.creatorUserId = creatorUserId;
-    }
-    
-    public Loan() {
-    }
+    // Default constructor for JPA
+    public LoanEntity() {}
 
-    public void approve() {
-        if (this.loanStatus != LoanStatus.PENDING) {
-            throw new IllegalStateException("Only pending loans can be approved");
-        }
-        this.loanStatus = LoanStatus.APPROVED;
-        this.approvalDate = LocalDateTime.now();
-    }
-
-    public void disburse() {
-        if (this.loanStatus != LoanStatus.APPROVED) {
-            throw new IllegalStateException("Only approved loans can be disbursed");
-        }
-        this.loanStatus = LoanStatus.DISBURSED;
-        this.disbursementDate = LocalDateTime.now();
-    }
-
+    // Getters and Setters
     public int getLoanId() { return loanId; }
     public void setLoanId(int loanId) { this.loanId = loanId; }
 
@@ -87,4 +70,3 @@ public class Loan {
     public int getCreatorUserId() { return creatorUserId; }
     public void setCreatorUserId(int creatorUserId) { this.creatorUserId = creatorUserId; }
 }
-

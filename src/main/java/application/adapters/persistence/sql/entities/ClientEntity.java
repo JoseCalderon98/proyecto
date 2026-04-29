@@ -1,20 +1,29 @@
-package domain.models.client;
+package application.adapters.persistence.sql.entities;
 
-public abstract class Client {
+import domain.models.client.ClientStatus;
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class ClientEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String fullName;
     private String identification;
-    
+
+    @Enumerated(EnumType.STRING)
     private ClientStatus clientStatus;
 
-    public Client(String fullName, String identification, ClientStatus clientStatus) {
+    public ClientEntity() {
+    }
+
+    public ClientEntity(Integer id, String fullName, String identification, ClientStatus clientStatus) {
+        this.id = id;
         this.fullName = fullName;
         this.identification = identification;
         this.clientStatus = clientStatus;
-    }
-
-    public Client() {
     }
 
     public Integer getId() {
@@ -49,4 +58,3 @@ public abstract class Client {
         this.clientStatus = clientStatus;
     }
 }
-

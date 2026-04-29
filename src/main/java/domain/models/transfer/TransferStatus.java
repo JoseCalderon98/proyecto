@@ -4,6 +4,7 @@ public enum TransferStatus {
     PENDING,
     COMPLETED,
     FAILED,
-    REJECTED
+    REJECTED,
+    EXPIRED
 }
 
