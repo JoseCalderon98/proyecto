@@ -1,0 +1,12 @@
+$kind: http-request
+description: Desembolsa el préstamo y carga los fondos a la cuenta.
+url: "{{baseUrl}}/api/loans/1/disburse"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+    }
+order: 6000

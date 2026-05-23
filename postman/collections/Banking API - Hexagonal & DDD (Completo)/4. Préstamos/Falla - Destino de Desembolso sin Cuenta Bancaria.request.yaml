@@ -1,0 +1,21 @@
+$kind: http-request
+description: Lanza 'IllegalArgumentException' (HTTP 400 Bad Request) al solicitar un préstamo especificando una cuenta de desembolso inexistente.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "PERSONAL",
+      "applicantClientId": "12345678",
+      "requestedAmount": 150000.00,
+      "approvedAmount": 150000.00,
+      "interestRate": 2.5,
+      "termMonths": 12,
+      "destinationAccountForDisbursement": "999999999999999",
+      "creatorUserId": 1,
+      "userRole": "NATURAL_CLIENT"
+    }
+order: 11000

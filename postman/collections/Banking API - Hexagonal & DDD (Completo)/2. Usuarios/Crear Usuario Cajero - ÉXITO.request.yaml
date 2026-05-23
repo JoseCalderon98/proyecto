@@ -1,0 +1,23 @@
+$kind: http-request
+description: Crea un usuario con rol TELLER activo.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "66666666",
+      "fullName": "Cajero de Pruebas",
+      "identification": "66666666",
+      "email": "cajero@banco.com",
+      "phone": "3006666666",
+      "address": "Caja 1",
+      "systemRole": "TELLER",
+      "userStatus": "ACTIVE",
+      "username": "cajero_test",
+      "password": "password123",
+      "birthDate": "1994-09-20"
+    }
+order: 4000

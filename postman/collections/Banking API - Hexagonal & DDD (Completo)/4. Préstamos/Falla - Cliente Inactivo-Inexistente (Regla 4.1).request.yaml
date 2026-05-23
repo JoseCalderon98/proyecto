@@ -1,0 +1,20 @@
+$kind: http-request
+name: Falla - Cliente Inactivo/Inexistente (Regla 4.1)
+description: Lanza 'InactiveClientException' (HTTP 409 Conflict) porque el cliente solicitante '99999999' no existe en el sistema.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "PERSONAL",
+      "applicantClientId": "99999999",
+      "requestedAmount": 10000.00,
+      "approvedAmount": 10000.00,
+      "interestRate": 2.0,
+      "termMonths": 24,
+      "destinationAccountForDisbursement": "123456789012345"
+    }
+order: 9000

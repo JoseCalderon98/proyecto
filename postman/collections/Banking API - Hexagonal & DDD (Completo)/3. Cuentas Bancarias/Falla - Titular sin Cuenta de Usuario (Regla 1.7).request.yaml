@@ -1,0 +1,17 @@
+$kind: http-request
+description: Lanza 'InactiveUserException' (HTTP 400 Bad Request) si intentas abrir la cuenta bancaria de un cliente que existe pero que aún no tiene su cuenta digital de Usuario registrada en el sistema.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "222333444555666",
+      "accountType": "SAVINGS",
+      "holderId": "12345678",
+      "initialBalance": 50000.00,
+      "currency": "COP"
+    }
+order: 5000

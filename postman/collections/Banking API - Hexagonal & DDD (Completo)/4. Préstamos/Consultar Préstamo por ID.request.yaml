@@ -1,0 +1,5 @@
+$kind: http-request
+description: Consulta un préstamo específico por su ID único.
+url: "{{baseUrl}}/api/loans/1"
+method: GET
+order: 2000

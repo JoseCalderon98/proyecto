@@ -1,0 +1,14 @@
+package domain.models.audit;
+
+public enum OperationType {
+    DEPOSIT,
+    WITHDRAWAL,
+    TRANSFER,
+    LOGIN,
+    ACCOUNT_CREATION,
+    LOAN_APPROVAL,
+    LOAN_DISBURSEMENT,
+    TRANSFER_APPROVAL,
+    TRANSFER_EXPIRATION
+}
+

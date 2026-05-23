@@ -1,0 +1,15 @@
+$kind: http-request
+description: Registra un nuevo cliente natural de forma exitosa (Mayor de 18 años, Regla 1.5).
+url: "{{baseUrl}}/api/clients/individual"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Juan Perez",
+      "identificationNumber": "12345678",
+      "birthDate": "1995-08-20"
+    }
+order: 1000

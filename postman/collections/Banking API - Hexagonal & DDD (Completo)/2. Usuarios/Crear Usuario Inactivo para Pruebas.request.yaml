@@ -1,0 +1,23 @@
+$kind: http-request
+description: Registra un usuario con estado INACTIVE para poder probar posteriormente el lanzamiento de InactiveUserException.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "87654321",
+      "fullName": "Usuario Inactivo",
+      "identification": "87654321",
+      "email": "inactivo@banco.com",
+      "phone": "3119876543",
+      "address": "Diagonal 45 # 12-09",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "INACTIVE",
+      "username": "inactivo123",
+      "password": "password123",
+      "birthDate": "1995-08-20"
+    }
+order: 5000

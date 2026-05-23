@@ -1,0 +1,23 @@
+$kind: http-request
+description: Crea un usuario para el cliente corporativo (Rol ENTERPRISE_CLIENT).
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "900123456",
+      "fullName": "Representante Legal",
+      "identification": "12345678",
+      "email": "gerencia@techsolutions.com",
+      "phone": "3001234567",
+      "address": "Av. Principal 123",
+      "systemRole": "ENTERPRISE_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "techsolutions",
+      "password": "password123",
+      "birthDate": "1980-05-10"
+    }
+order: 1005

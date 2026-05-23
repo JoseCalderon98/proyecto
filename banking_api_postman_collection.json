@@ -1,0 +1,1488 @@
+﻿{
+    "info":  {
+                 "name":  "Banking API - Hexagonal & DDD (Completo)",
+                 "schema":  "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+             },
+    "variable":  [
+                     {
+                         "key":  "baseUrl",
+                         "value":  "http://localhost:8080"
+                     }
+                 ],
+    "item":  [
+                 {
+                     "name":  "0. Autenticación",
+                     "item":  [
+                                  {
+                                      "name":  "Login - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/v1/auth/login",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "v1",
+                                                                               "auth",
+                                                                               "login"
+                                                                           ]
+                                                              },
+                                                      "description":  "Inicia sesión y obtiene el token JWT.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "username": "juanperez123",
+  "password": "password123"
+}
+order: 1000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "1. Clientes",
+                     "item":  [
+                                  {
+                                      "name":  "Crear Cliente Empresa - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/clients/corporate",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "clients",
+                                                                               "corporate"
+                                                                           ]
+                                                              },
+                                                      "description":  "Registra un nuevo cliente corporativo de forma exitosa.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "fullName": "Juan Perez",
+  "identification": "900123456",
+  "companyName": "Tech Solutions S.A.S",
+  "taxId": "900123456-1",
+  "legalRepresentativeId": "12345678"
+}
+order: 1005",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Cliente Natural - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/clients/individual",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "clients",
+                                                                               "individual"
+                                                                           ]
+                                                              },
+                                                      "description":  "Registra un nuevo cliente natural de forma exitosa (Mayor de 18 años, Regla 1.5).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "name": "Juan Perez",
+  "identificationNumber": "12345678",
+  "birthDate": "1995-08-20"
+}
+order: 1000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "2. Usuarios",
+                     "item":  [
+                                  {
+                                      "name":  "Crear Usuario - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea un usuario activo en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "12345678",
+  "fullName": "Juan Perez",
+  "identification": "12345678",
+  "email": "juan.perez@banco.com",
+  "phone": "3001234567",
+  "address": "Calle 123 # 45-67",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "juanperez123",
+  "password": "password123",
+  "birthDate": "1995-08-20"
+}
+order: 1000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Usuario Analista Interno - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea un usuario con rol INTERNAL_ANALYST activo para poder aprobar y desembolsar préstamos.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "88888888",
+  "fullName": "Analista de Pruebas",
+  "identification": "88888888",
+  "email": "analista@banco.com",
+  "phone": "3008888888",
+  "address": "Oficina Central",
+  "systemRole": "INTERNAL_ANALYST",
+  "userStatus": "ACTIVE",
+  "username": "analista_test",
+  "password": "password123",
+  "birthDate": "1990-01-01"
+}
+order: 2000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Usuario Cajero - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea un usuario con rol TELLER activo.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "66666666",
+  "fullName": "Cajero de Pruebas",
+  "identification": "66666666",
+  "email": "cajero@banco.com",
+  "phone": "3006666666",
+  "address": "Caja 1",
+  "systemRole": "TELLER",
+  "userStatus": "ACTIVE",
+  "username": "cajero_test",
+  "password": "password123",
+  "birthDate": "1994-09-20"
+}
+order: 4000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Usuario Ejecutivo Comercial - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea un usuario con rol COMMERCIAL_EXECUTIVE activo para poder registrar solicitudes de préstamo en nombre de clientes.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "77777777",
+  "fullName": "Ejecutivo de Pruebas",
+  "identification": "77777777",
+  "email": "ejecutivo@banco.com",
+  "phone": "3007777777",
+  "address": "Oficina Principal",
+  "systemRole": "COMMERCIAL_EXECUTIVE",
+  "userStatus": "ACTIVE",
+  "username": "ejecutivo_test",
+  "password": "password123",
+  "birthDate": "1992-05-15"
+}
+order: 3000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Usuario Empresa - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea un usuario para el cliente corporativo (Rol ENTERPRISE_CLIENT).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "900123456",
+  "fullName": "Representante Legal",
+  "identification": "12345678",
+  "email": "gerencia@techsolutions.com",
+  "phone": "3001234567",
+  "address": "Av. Principal 123",
+  "systemRole": "ENTERPRISE_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "techsolutions",
+  "password": "password123",
+  "birthDate": "1980-05-10"
+}
+order: 1005",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Crear Usuario Inactivo para Pruebas",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Registra un usuario con estado INACTIVE para poder probar posteriormente el lanzamiento de InactiveUserException.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "87654321",
+  "fullName": "Usuario Inactivo",
+  "identification": "87654321",
+  "email": "inactivo@banco.com",
+  "phone": "3119876543",
+  "address": "Diagonal 45 # 12-09",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "INACTIVE",
+  "username": "inactivo123",
+  "password": "password123",
+  "birthDate": "1995-08-20"
+}
+order: 5000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Cliente Menor de Edad (Regla 1.5)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'IllegalArgumentException' (HTTP 400 Bad Request) porque la fecha de nacimiento ingresada '2015-08-20' indica que es menor de edad (10 años), violando la regla de mayoría de edad (mínimo 18 años).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "55555555",
+  "fullName": "Menor de Edad",
+  "identification": "55555555",
+  "email": "menor@banco.com",
+  "phone": "3005555555",
+  "address": "Calle Falsa 123",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "menor123",
+  "password": "password123",
+  "birthDate": "2015-08-20"
+}
+order: 9000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Correo Sin Arroba-Dominio (Regla 1.3)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza un error de validación de Jakarta Validation (HTTP 400) porque el correo electrónico no cumple con la expresión regular de validación.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "99999999",
+  "fullName": "Carlos Lopez",
+  "identification": "99999999",
+  "email": "correo-invalido",
+  "phone": "3009999999",
+  "address": "Calle Falsa 123",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "carlos99",
+  "password": "password123",
+  "birthDate": "1995-08-20"
+}
+order: 7000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Identificación Duplicada (Regla 1.1)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'UserAlreadyExistsException' (HTTP 400 Bad Request) porque la identificación '12345678' ya está registrada en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "12345678",
+  "fullName": "Otro Juan Perez",
+  "identification": "12345678",
+  "email": "otro.juan@banco.com",
+  "phone": "3101234567",
+  "address": "Avenida 9 # 10-11",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "otrojuanperez",
+  "password": "password123",
+  "birthDate": "1995-08-20"
+}
+order: 6000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Teléfono Fuera de Rango (Regla 1.4)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/users",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "users"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza un error de validación (HTTP 400) porque el teléfono tiene solo 5 dígitos (debe tener entre 7 y 15 dígitos numéricos).",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "relatedId": "99999999",
+  "fullName": "Carlos Lopez",
+  "identification": "99999999",
+  "email": "carlos@banco.com",
+  "phone": "12345",
+  "address": "Calle Falsa 123",
+  "systemRole": "NATURAL_CLIENT",
+  "userStatus": "ACTIVE",
+  "username": "carlos99",
+  "password": "password123",
+  "birthDate": "1995-08-20"
+}
+order: 8000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "3. Cuentas Bancarias",
+                     "item":  [
+                                  {
+                                      "name":  "Abrir Cuenta - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea una nueva cuenta bancaria para el cliente activo de forma exitosa.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "123456789012345",
+  "accountType": "SAVINGS",
+  "holderId": "12345678",
+  "initialBalance": 50000.00,
+  "currency": "COP"
+}
+order: 1000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Abrir Cuenta Empresa - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea una nueva cuenta bancaria para la empresa.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "555555555555555",
+  "accountType": "CHECKING",
+  "holderId": "900123456",
+  "initialBalance": 5000000.00,
+  "currency": "COP"
+}
+order: 1005",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Abrir Segunda Cuenta (Destino) - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea una segunda cuenta destino para realizar pruebas de transferencias y préstamos.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "987654321098765",
+  "accountType": "SAVINGS",
+  "holderId": "12345678",
+  "initialBalance": 1000.00,
+  "currency": "COP"
+}
+order: 2000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Número de Cuenta Duplicado (Regla 3.1)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'DuplicateBankAccountException' (HTTP 400) al intentar abrir una cuenta con un número de cuenta que ya existe.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "123456789012345",
+  "accountType": "CHECKING",
+  "holderId": "12345678",
+  "initialBalance": 10000.00,
+  "currency": "COP"
+}
+order: 3000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Titular Inexistente (Regla 3.6)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveClientException' (HTTP 409 Conflict) porque el titular con ID '99999999' no existe en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "111222333444555",
+  "accountType": "SAVINGS",
+  "holderId": "99999999",
+  "initialBalance": 500.00,
+  "currency": "COP"
+}
+order: 4000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Titular sin Cuenta de Usuario (Regla 1.7)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/accounts",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "accounts"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveUserException' (HTTP 400 Bad Request) si intentas abrir la cuenta bancaria de un cliente que existe pero que aún no tiene su cuenta digital de Usuario registrada en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "accountNumber": "222333444555666",
+  "accountType": "SAVINGS",
+  "holderId": "12345678",
+  "initialBalance": 50000.00,
+  "currency": "COP"
+}
+order: 5000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "4. Préstamos",
+                     "item":  [
+                                  {
+                                      "name":  "Aprobar Préstamo - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans/1/approve",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans",
+                                                                               "1",
+                                                                               "approve"
+                                                                           ]
+                                                              },
+                                                      "description":  "Aprueba el préstamo. Exige rol INTERNAL_ANALYST.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+}
+order: 4000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Consultar Préstamo por ID",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans/1",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans",
+                                                                               "1"
+                                                                           ]
+                                                              },
+                                                      "description":  "Consulta un préstamo específico por su ID único."
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Desembolsar Préstamo - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans/1/disburse",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans",
+                                                                               "1",
+                                                                               "disburse"
+                                                                           ]
+                                                              },
+                                                      "description":  "Desembolsa el préstamo y carga los fondos a la cuenta.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+}
+order: 6000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Cliente Inactivo-Inexistente (Regla 4.1)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveClientException' (HTTP 409 Conflict) porque el cliente solicitante '99999999' no existe en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "99999999",
+  "requestedAmount": 10000.00,
+  "approvedAmount": 10000.00,
+  "interestRate": 2.0,
+  "termMonths": 24,
+  "destinationAccountForDisbursement": "123456789012345"
+}
+order: 9000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Creador de Préstamo Inactivo (Regla 1.7)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveUserException' (HTTP 409 Conflict) porque el usuario con ID 2 ('Usuario Inactivo') está inactivo en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "12345678",
+  "requestedAmount": 10000.00,
+  "approvedAmount": 10000.00,
+  "interestRate": 2.0,
+  "termMonths": 24,
+  "destinationAccountForDisbursement": "123456789012345"
+}
+order: 8000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Destino de Desembolso sin Cuenta Bancaria",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'IllegalArgumentException' (HTTP 400 Bad Request) al solicitar un préstamo especificando una cuenta de desembolso inexistente.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "12345678",
+  "requestedAmount": 150000.00,
+  "approvedAmount": 150000.00,
+  "interestRate": 2.5,
+  "termMonths": 12,
+  "destinationAccountForDisbursement": "999999999999999",
+  "creatorUserId": 1,
+  "userRole": "NATURAL_CLIENT"
+}
+order: 11000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Rol No Autorizado (Regla 5.2)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'UnauthorizedRoleException' (HTTP 403 Forbidden) porque el rol 'TELLER' no está facultado para realizar solicitudes de préstamo.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "12345678",
+  "requestedAmount": 5000.00,
+  "approvedAmount": 5000.00,
+  "interestRate": 3.0,
+  "termMonths": 6,
+  "destinationAccountForDisbursement": "123456789012345"
+}
+order: 7000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Solicitante sin Cuenta de Usuario (Regla 1.7)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveUserException' (HTTP 400 Bad Request) al intentar solicitar un préstamo para un cliente físico que existe pero que aún no tiene su cuenta digital de Usuario registrada en el sistema.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "12345678",
+  "requestedAmount": 150000.00,
+  "approvedAmount": 150000.00,
+  "interestRate": 2.5,
+  "termMonths": 12,
+  "destinationAccountForDisbursement": "123456789012345"
+}
+order: 10000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Listar Todos los Préstamos",
+                                      "request":  {
+                                                      "method":  "GET",
+                                                      "header":  [
+
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Obtiene la lista completa de todos los préstamos registrados en el sistema, mostrando sus IDs y estados."
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Rechazar Préstamo - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans/1/reject",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans",
+                                                                               "1",
+                                                                               "reject"
+                                                                           ]
+                                                              },
+                                                      "description":  "Rechaza el préstamo. Exige rol INTERNAL_ANALYST y validación en base de datos.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+}
+order: 5000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Solicitar Préstamo - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea una solicitud de préstamo en estado PENDING ('En estudio') de forma exitosa.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "PERSONAL",
+  "applicantClientId": "12345678",
+  "requestedAmount": 150000.00,
+  "approvedAmount": 150000.00,
+  "interestRate": 2.5,
+  "termMonths": 12,
+  "destinationAccountForDisbursement": "123456789012345"
+}
+order: 3000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Solicitar Préstamo Empresa - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/loans",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "loans"
+                                                                           ]
+                                                              },
+                                                      "description":  "Crea una solicitud de préstamo COMERCIAL a nombre de la empresa.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "loanType": "COMMERCIAL",
+  "applicantClientId": "900123456",
+  "requestedAmount": 15000000.00,
+  "approvedAmount": 15000000.00,
+  "interestRate": 1.5,
+  "termMonths": 36,
+  "destinationAccountForDisbursement": "555555555555555"
+}
+order: 1005",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 },
+                 {
+                     "name":  "5. Transferencias",
+                     "item":  [
+                                  {
+                                      "name":  "Crear Transferencia - ÉXITO",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/transfers",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "transfers"
+                                                                           ]
+                                                              },
+                                                      "description":  "Realiza una transferencia exitosa entre dos cuentas activas.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "originAccount": "123456789012345",
+  "destinationAccount": "987654321098765",
+  "amount": 5000.00
+}
+order: 1000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  },
+                                  {
+                                      "name":  "Falla - Transferencia por Creador Inactivo (Regla 1.7)",
+                                      "request":  {
+                                                      "method":  "POST",
+                                                      "header":  [
+                                                                     {
+                                                                         "key":  "Content-Type",
+                                                                         "value":  "application/json",
+                                                                         "type":  "text"
+                                                                     }
+                                                                 ],
+                                                      "url":  {
+                                                                  "raw":  "{{baseUrl}}/api/transfers",
+                                                                  "host":  [
+                                                                               "{{baseUrl}}"
+                                                                           ],
+                                                                  "path":  [
+                                                                               "api",
+                                                                               "transfers"
+                                                                           ]
+                                                              },
+                                                      "description":  "Lanza 'InactiveUserException' (HTTP 409 Conflict) porque el usuario con ID 2 ('Usuario Inactivo') está inactivo.",
+                                                      "body":  {
+                                                                   "mode":  "raw",
+                                                                   "raw":  "{
+  "originAccount": "123456789012345",
+  "destinationAccount": "987654321098765",
+  "amount": 50.00,
+  "userId": 2,
+  "userRole": "NATURAL_CLIENT"
+}
+order: 2000",
+                                                                   "options":  {
+                                                                                   "raw":  {
+                                                                                               "language":  "json"
+                                                                                           }
+                                                                               }
+                                                               }
+                                                  },
+                                      "response":  [
+
+                                                   ]
+                                  }
+                              ]
+                 }
+             ]
+}

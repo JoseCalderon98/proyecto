@@ -1,0 +1,17 @@
+$kind: http-request
+description: Crea una nueva cuenta bancaria para el cliente activo de forma exitosa.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "123456789012345",
+      "accountType": "SAVINGS",
+      "holderId": "12345678",
+      "initialBalance": 50000.00,
+      "currency": "COP"
+    }
+order: 1000

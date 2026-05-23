@@ -1,0 +1,17 @@
+$kind: http-request
+description: Lanza 'InactiveUserException' (HTTP 409 Conflict) porque el usuario con ID 2 ('Usuario Inactivo') está inactivo.
+url: "{{baseUrl}}/api/transfers"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "originAccount": "123456789012345",
+      "destinationAccount": "987654321098765",
+      "amount": 50.00,
+      "userId": 2,
+      "userRole": "NATURAL_CLIENT"
+    }
+order: 2000

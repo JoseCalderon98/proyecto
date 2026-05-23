@@ -1,0 +1,19 @@
+$kind: http-request
+description: Crea una solicitud de préstamo en estado PENDING ('En estudio') de forma exitosa.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "PERSONAL",
+      "applicantClientId": "12345678",
+      "requestedAmount": 150000.00,
+      "approvedAmount": 150000.00,
+      "interestRate": 2.5,
+      "termMonths": 12,
+      "destinationAccountForDisbursement": "123456789012345"
+    }
+order: 3000

@@ -1,0 +1,23 @@
+$kind: http-request
+description: Crea un usuario con rol COMMERCIAL_EXECUTIVE activo para poder registrar solicitudes de préstamo en nombre de clientes.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "77777777",
+      "fullName": "Ejecutivo de Pruebas",
+      "identification": "77777777",
+      "email": "ejecutivo@banco.com",
+      "phone": "3007777777",
+      "address": "Oficina Principal",
+      "systemRole": "COMMERCIAL_EXECUTIVE",
+      "userStatus": "ACTIVE",
+      "username": "ejecutivo_test",
+      "password": "password123",
+      "birthDate": "1992-05-15"
+    }
+order: 3000

@@ -1,0 +1,17 @@
+$kind: http-request
+description: Lanza 'InactiveClientException' (HTTP 409 Conflict) porque el titular con ID '99999999' no existe en el sistema.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "111222333444555",
+      "accountType": "SAVINGS",
+      "holderId": "99999999",
+      "initialBalance": 500.00,
+      "currency": "COP"
+    }
+order: 4000

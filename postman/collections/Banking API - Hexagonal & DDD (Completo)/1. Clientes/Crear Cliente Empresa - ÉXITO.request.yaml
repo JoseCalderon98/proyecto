@@ -1,0 +1,17 @@
+$kind: http-request
+description: Registra un nuevo cliente corporativo de forma exitosa.
+url: "{{baseUrl}}/api/clients/corporate"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "fullName": "Juan Perez",
+      "identification": "900123456",
+      "companyName": "Tech Solutions S.A.S",
+      "taxId": "900123456-1",
+      "legalRepresentativeId": "12345678"
+    }
+order: 1005

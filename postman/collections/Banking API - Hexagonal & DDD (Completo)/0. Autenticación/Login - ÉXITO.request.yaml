@@ -1,0 +1,14 @@
+$kind: http-request
+description: Inicia sesión y obtiene el token JWT.
+url: "{{baseUrl}}/api/v1/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "juanperez123",
+      "password": "password123"
+    }
+order: 1000

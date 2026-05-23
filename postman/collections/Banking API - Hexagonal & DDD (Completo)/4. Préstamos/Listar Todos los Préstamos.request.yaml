@@ -1,0 +1,5 @@
+$kind: http-request
+description: Obtiene la lista completa de todos los préstamos registrados en el sistema, mostrando sus IDs y estados.
+url: "{{baseUrl}}/api/loans"
+method: GET
+order: 1000

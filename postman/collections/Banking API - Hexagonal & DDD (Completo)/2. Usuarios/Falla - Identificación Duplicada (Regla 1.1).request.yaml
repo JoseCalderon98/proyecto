@@ -1,0 +1,23 @@
+$kind: http-request
+description: Lanza 'UserAlreadyExistsException' (HTTP 400 Bad Request) porque la identificación '12345678' ya está registrada en el sistema.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "12345678",
+      "fullName": "Otro Juan Perez",
+      "identification": "12345678",
+      "email": "otro.juan@banco.com",
+      "phone": "3101234567",
+      "address": "Avenida 9 # 10-11",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "otrojuanperez",
+      "password": "password123",
+      "birthDate": "1995-08-20"
+    }
+order: 6000

@@ -1,0 +1,19 @@
+$kind: http-request
+description: Lanza 'InactiveUserException' (HTTP 409 Conflict) porque el usuario con ID 2 ('Usuario Inactivo') está inactivo en el sistema.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "PERSONAL",
+      "applicantClientId": "12345678",
+      "requestedAmount": 10000.00,
+      "approvedAmount": 10000.00,
+      "interestRate": 2.0,
+      "termMonths": 24,
+      "destinationAccountForDisbursement": "123456789012345"
+    }
+order: 8000

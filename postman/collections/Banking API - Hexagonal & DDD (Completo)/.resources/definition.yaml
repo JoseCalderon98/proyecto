@@ -1,0 +1,4 @@
+$kind: collection
+description: Colección de Postman para probar todos los endpoints exitosos y los escenarios de falla de reglas de negocio que arrojan nuestras excepciones personalizadas.
+variables:
+  baseUrl: http://localhost:8080

@@ -1,0 +1,15 @@
+$kind: http-request
+description: Realiza una transferencia exitosa entre dos cuentas activas.
+url: "{{baseUrl}}/api/transfers"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "originAccount": "123456789012345",
+      "destinationAccount": "987654321098765",
+      "amount": 5000.00
+    }
+order: 1000

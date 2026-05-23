@@ -1,0 +1,17 @@
+$kind: http-request
+description: Crea una segunda cuenta destino para realizar pruebas de transferencias y préstamos.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "987654321098765",
+      "accountType": "SAVINGS",
+      "holderId": "12345678",
+      "initialBalance": 1000.00,
+      "currency": "COP"
+    }
+order: 2000

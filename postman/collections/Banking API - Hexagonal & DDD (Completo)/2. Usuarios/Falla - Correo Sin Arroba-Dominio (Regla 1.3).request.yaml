@@ -1,0 +1,24 @@
+$kind: http-request
+name: Falla - Correo Sin Arroba/Dominio (Regla 1.3)
+description: Lanza un error de validación de Jakarta Validation (HTTP 400) porque el correo electrónico no cumple con la expresión regular de validación.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "99999999",
+      "fullName": "Carlos Lopez",
+      "identification": "99999999",
+      "email": "correo-invalido",
+      "phone": "3009999999",
+      "address": "Calle Falsa 123",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "carlos99",
+      "password": "password123",
+      "birthDate": "1995-08-20"
+    }
+order: 7000

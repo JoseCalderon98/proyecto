@@ -1,0 +1,12 @@
+package domain.models.user;
+
+public enum UserRole {
+    NATURAL_CLIENT,
+    ENTERPRISE_CLIENT,
+    TELLER,
+    COMMERCIAL_EXECUTIVE,
+    ENTERPRISE_EMPLOYEE,
+    ENTERPRISE_SUPERVISOR,
+    INTERNAL_ANALYST
+}
+

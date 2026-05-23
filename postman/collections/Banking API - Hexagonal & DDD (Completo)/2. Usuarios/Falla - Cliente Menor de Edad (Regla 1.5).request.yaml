@@ -1,0 +1,23 @@
+$kind: http-request
+description: Lanza 'IllegalArgumentException' (HTTP 400 Bad Request) porque la fecha de nacimiento ingresada '2015-08-20' indica que es menor de edad (10 años), violando la regla de mayoría de edad (mínimo 18 años).
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "55555555",
+      "fullName": "Menor de Edad",
+      "identification": "55555555",
+      "email": "menor@banco.com",
+      "phone": "3005555555",
+      "address": "Calle Falsa 123",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "menor123",
+      "password": "password123",
+      "birthDate": "2015-08-20"
+    }
+order: 9000

@@ -1,0 +1,12 @@
+$kind: http-request
+description: Rechaza el préstamo. Exige rol INTERNAL_ANALYST y validación en base de datos.
+url: "{{baseUrl}}/api/loans/1/reject"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+    }
+order: 5000

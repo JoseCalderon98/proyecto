@@ -1,0 +1,23 @@
+$kind: http-request
+description: Crea un usuario con rol INTERNAL_ANALYST activo para poder aprobar y desembolsar préstamos.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "88888888",
+      "fullName": "Analista de Pruebas",
+      "identification": "88888888",
+      "email": "analista@banco.com",
+      "phone": "3008888888",
+      "address": "Oficina Central",
+      "systemRole": "INTERNAL_ANALYST",
+      "userStatus": "ACTIVE",
+      "username": "analista_test",
+      "password": "password123",
+      "birthDate": "1990-01-01"
+    }
+order: 2000

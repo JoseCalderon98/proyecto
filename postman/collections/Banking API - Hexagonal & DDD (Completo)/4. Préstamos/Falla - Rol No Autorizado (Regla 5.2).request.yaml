@@ -1,0 +1,19 @@
+$kind: http-request
+description: Lanza 'UnauthorizedRoleException' (HTTP 403 Forbidden) porque el rol 'TELLER' no está facultado para realizar solicitudes de préstamo.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "PERSONAL",
+      "applicantClientId": "12345678",
+      "requestedAmount": 5000.00,
+      "approvedAmount": 5000.00,
+      "interestRate": 3.0,
+      "termMonths": 6,
+      "destinationAccountForDisbursement": "123456789012345"
+    }
+order: 7000

@@ -1,0 +1,614 @@
+{
+	"info": {
+		"name": "Banking API - Validaciones Completas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"description": "Colección completa de pruebas para la API bancaria con validaciones de entrada"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080"
+		}
+	],
+	"item": [
+		{
+			"name": "1. Crear Cliente Individual",
+			"item": [
+				{
+					"name": "1.1 ✅ Caso exitoso",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"identificationNumber\": \"1234567890\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.2 ❌ Nombre vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"\",\n    \"identificationNumber\": \"1234567890\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.3 ❌ Nombre con números",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan123\",\n    \"identificationNumber\": \"1234567890\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.4 ❌ Nombre muy corto (menos de 3)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"AB\",\n    \"identificationNumber\": \"1234567890\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.5 ❌ Identificación con letras",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"identificationNumber\": \"ABC1234\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.6 ❌ Identificación muy corta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"identificationNumber\": \"12345\",\n    \"birthDate\": \"1990-05-15\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.7 ❌ Fecha nacimiento en el futuro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"identificationNumber\": \"1234567890\",\n    \"birthDate\": \"2030-01-01\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.8 ❌ Fecha nacimiento nula",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Juan Pérez\",\n    \"identificationNumber\": \"1234567890\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				},
+				{
+					"name": "1.9 ❌ Body completamente vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/clients/individual", "host": ["{{baseUrl}}"], "path": ["api", "clients", "individual"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Crear Transferencia",
+			"item": [
+				{
+					"name": "2.1 ✅ Exitoso - Cliente natural",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.2 ✅ Exitoso - Empleado empresarial (requiere aprobación)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 50000000.00,\n    \"userId\": 2,\n    \"userRole\": \"ENTERPRISE_EMPLOYEE\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.3 ❌ Cuenta origen con letras",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"ABC1234567\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.4 ❌ Cuenta origen muy corta",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"12345\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.5 ❌ Monto negativo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": -100.00,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.6 ❌ Monto cero",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 0,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.7 ❌ Monto nulo (campo faltante)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.8 ❌ Monto excede límite",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 9999999999.99,\n    \"userId\": 1,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.9 ❌ Rol inválido",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"ADMIN\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.10 ❌ Rol vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.11 ❌ userId nulo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.12 ❌ userId cero",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 0,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.13 ❌ Rol no autorizado (INTERNAL_ANALYST)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"originAccount\": \"1234567890\",\n    \"destinationAccount\": \"9876543210\",\n    \"amount\": 500.00,\n    \"userId\": 1,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				},
+				{
+					"name": "2.14 ❌ Body vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers", "host": ["{{baseUrl}}"], "path": ["api", "transfers"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Aprobar Transferencia",
+			"item": [
+				{
+					"name": "3.1 ✅ Exitoso - Supervisor empresarial",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 5,\n    \"userRole\": \"ENTERPRISE_SUPERVISOR\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "3.2 ❌ Rol no autorizado (NATURAL_CLIENT)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 5,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "3.3 ❌ Rol inválido (GERENTE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 5,\n    \"userRole\": \"GERENTE\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "3.4 ❌ userId faltante",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userRole\": \"ENTERPRISE_SUPERVISOR\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "3.5 ❌ Body vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "1", "approve"] }
+					}
+				},
+				{
+					"name": "3.6 ❌ Transferencia inexistente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 5,\n    \"userRole\": \"ENTERPRISE_SUPERVISOR\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/transfers/9999/approve", "host": ["{{baseUrl}}"], "path": ["api", "transfers", "9999", "approve"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Aprobar Préstamo",
+			"item": [
+				{
+					"name": "4.1 ✅ Exitoso - Analista interno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "approve"] }
+					}
+				},
+				{
+					"name": "4.2 ❌ Rol no autorizado (NATURAL_CLIENT)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"NATURAL_CLIENT\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "approve"] }
+					}
+				},
+				{
+					"name": "4.3 ❌ Rol inválido (DIRECTOR)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"DIRECTOR\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "approve"] }
+					}
+				},
+				{
+					"name": "4.4 ❌ Préstamo inexistente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/9999/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "9999", "approve"] }
+					}
+				},
+				{
+					"name": "4.5 ❌ userId negativo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": -1,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "approve"] }
+					}
+				},
+				{
+					"name": "4.6 ❌ Body vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/approve", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "approve"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Desembolsar Préstamo",
+			"item": [
+				{
+					"name": "5.1 ✅ Exitoso - Analista interno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "disburse"] }
+					}
+				},
+				{
+					"name": "5.2 ❌ Rol no autorizado (ENTERPRISE_EMPLOYEE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"ENTERPRISE_EMPLOYEE\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "disburse"] }
+					}
+				},
+				{
+					"name": "5.3 ❌ Rol inválido (CAJERO)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"CAJERO\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "disburse"] }
+					}
+				},
+				{
+					"name": "5.4 ❌ userId negativo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": -1,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "disburse"] }
+					}
+				},
+				{
+					"name": "5.5 ❌ Préstamo inexistente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 3,\n    \"userRole\": \"INTERNAL_ANALYST\"\n}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/9999/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "9999", "disburse"] }
+					}
+				},
+				{
+					"name": "5.6 ❌ Body vacío",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": { "raw": "{{baseUrl}}/api/loans/1/disburse", "host": ["{{baseUrl}}"], "path": ["api", "loans", "1", "disburse"] }
+					}
+				}
+			]
+		}
+	]
+}

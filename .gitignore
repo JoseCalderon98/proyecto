@@ -1,0 +1,17 @@
+.vscode/
+target/
+*.class
+*.jar
+*.war
+.idea/
+*.iml
+
+*.ps1
+*.py
+*.js
+*.log
+*.txt
+*.zip
+apache-maven-*/
+boot.log
+boot.txt

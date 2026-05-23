@@ -1,0 +1,17 @@
+$kind: http-request
+description: Crea una nueva cuenta bancaria para la empresa.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "555555555555555",
+      "accountType": "CHECKING",
+      "holderId": "900123456",
+      "initialBalance": 5000000.00,
+      "currency": "COP"
+    }
+order: 1005

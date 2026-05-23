@@ -1,0 +1,23 @@
+$kind: http-request
+description: Crea un usuario activo en el sistema.
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "12345678",
+      "fullName": "Juan Perez",
+      "identification": "12345678",
+      "email": "juan.perez@banco.com",
+      "phone": "3001234567",
+      "address": "Calle 123 # 45-67",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "juanperez123",
+      "password": "password123",
+      "birthDate": "1995-08-20"
+    }
+order: 1000

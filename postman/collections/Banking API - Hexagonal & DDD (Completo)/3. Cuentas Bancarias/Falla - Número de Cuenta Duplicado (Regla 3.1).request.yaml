@@ -1,0 +1,17 @@
+$kind: http-request
+description: Lanza 'DuplicateBankAccountException' (HTTP 400) al intentar abrir una cuenta con un número de cuenta que ya existe.
+url: "{{baseUrl}}/api/accounts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "accountNumber": "123456789012345",
+      "accountType": "CHECKING",
+      "holderId": "12345678",
+      "initialBalance": 10000.00,
+      "currency": "COP"
+    }
+order: 3000

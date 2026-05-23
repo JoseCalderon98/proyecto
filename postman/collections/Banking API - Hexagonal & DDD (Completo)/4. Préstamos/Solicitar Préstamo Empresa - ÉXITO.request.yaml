@@ -1,0 +1,19 @@
+$kind: http-request
+description: Crea una solicitud de préstamo COMERCIAL a nombre de la empresa.
+url: "{{baseUrl}}/api/loans"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "loanType": "COMMERCIAL",
+      "applicantClientId": "900123456",
+      "requestedAmount": 15000000.00,
+      "approvedAmount": 15000000.00,
+      "interestRate": 1.5,
+      "termMonths": 36,
+      "destinationAccountForDisbursement": "555555555555555"
+    }
+order: 1005

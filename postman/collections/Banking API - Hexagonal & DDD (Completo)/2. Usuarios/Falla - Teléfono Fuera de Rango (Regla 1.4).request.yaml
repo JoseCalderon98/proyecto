@@ -1,0 +1,23 @@
+$kind: http-request
+description: Lanza un error de validación (HTTP 400) porque el teléfono tiene solo 5 dígitos (debe tener entre 7 y 15 dígitos numéricos).
+url: "{{baseUrl}}/api/users"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "relatedId": "99999999",
+      "fullName": "Carlos Lopez",
+      "identification": "99999999",
+      "email": "carlos@banco.com",
+      "phone": "12345",
+      "address": "Calle Falsa 123",
+      "systemRole": "NATURAL_CLIENT",
+      "userStatus": "ACTIVE",
+      "username": "carlos99",
+      "password": "password123",
+      "birthDate": "1995-08-20"
+    }
+order: 8000
